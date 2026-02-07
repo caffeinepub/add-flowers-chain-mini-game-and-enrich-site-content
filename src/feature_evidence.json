@@ -1,0 +1,115 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-new-dedicated-flowers-chain-game-experience-as-a-patient-accessible-route-e-g-game-flowers-chain-and-implement-the-interactive-game-in-the-frontend-no-backend-persistence-required-the-game-must-1-render-a-grid-board-of-flower-tiles-2-allow-the-user-to-create-a-chain-by-dragging-or-clicking-adjacent-matching-flowers-3-award-points-based-on-chain-length-4-provide-clear-start-restart-controls-and-5-show-an-end-condition-e-g-moves-or-timer-with-a-results-screen",
+      "featureTitle": "Create a new dedicated Flowers Chain game experience as a patient-accessible route (e.g., `/game/flowers-chain`) and implement the interactive game in the frontend (no backend persistence required). The game must: (1) render a grid/board of flower tiles, (2) allow the user to create a chain by dragging or clicking adjacent matching flowers, (3) award points based on chain length, (4) provide clear start/restart controls, and (5) show an end condition (e.g., moves or timer) with a results screen.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+        "frontend/src/components/game/flowers-chain/flowersChainLogic.ts",
+        "frontend/src/components/game/flowers-chain/useFlowersChainGame.ts",
+        "frontend/src/components/nav/MobileAppBar.tsx",
+        "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-home-page-flowers-chain-promo-card-to-navigate-into-the-new-flowers-chain-game-route-instead-of-the-current-details-game-content-only-screen-while-keeping-the-other-promo-cards-unchanged",
+      "featureTitle": "Update the Home page “Flowers Chain” promo card to navigate into the new Flowers Chain game route (instead of the current `/details/game` content-only screen), while keeping the other promo cards unchanged.",
+      "files": [
+        "frontend/src/pages/patient/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-relevant-interesting-english-language-content-to-complement-the-flowers-chain-experience-this-must-include-1-a-short-how-to-play-section-on-the-game-screen-and-2-a-small-rotating-set-of-calming-wellness-oriented-micro-content-related-to-flowers-relaxation-e-g-short-facts-or-grounding-prompts-displayed-near-the-game-client-side-rotation-no-backend-required",
+      "featureTitle": "Add relevant, interesting, English-language content to complement the Flowers Chain experience. This must include: (1) a short “How to Play” section on the game screen, and (2) a small rotating set of calming, wellness-oriented micro-content related to flowers/relaxation (e.g., short facts or grounding prompts) displayed near the game (client-side rotation; no backend required).",
+      "files": [
+        "frontend/src/components/game/flowers-chain/useRotatingSnippet.ts",
+        "frontend/src/components/game/flowers-chain/wellnessSnippets.ts",
+        "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-integrate-optional-calming-audio-controls-on-the-flowers-chain-game-page-using-a-locally-bundled-audio-file-play-pause-and-volume-or-mute-the-game-must-remain-fully-usable-if-audio-cannot-autoplay-or-is-unavailable",
+      "featureTitle": "Integrate optional calming audio controls on the Flowers Chain game page using a locally bundled audio file (play/pause and volume or mute). The game must remain fully usable if audio cannot autoplay or is unavailable.",
+      "files": [
+        "frontend/src/components/game/flowers-chain/CalmingAudioControls.tsx",
+        "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-new-game-visuals-flower-tiles-and-an-optional-soft-background-banner-for-the-game-page-are-added-as-static-assets-and-used-by-the-ui-from-frontend-public-assets-generated-do-not-proxy-images-through-the-backend",
+      "featureTitle": "Ensure all new game visuals (flower tiles and an optional soft background/banner for the game page) are added as static assets and used by the UI from `frontend/public/assets/generated` (do not proxy images through the backend).",
+      "files": [
+        "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+        "frontend/src/components/game/flowers-chain/FlowersChainTile.tsx",
+        "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

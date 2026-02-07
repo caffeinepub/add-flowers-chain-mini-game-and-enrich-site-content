@@ -1,0 +1,116 @@
+{
+  "kind": "build_request",
+  "title": "Add Flowers Chain mini-game and enrich site content",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a new dedicated Flowers Chain game experience as a patient-accessible route (e.g., `/game/flowers-chain`) and implement the interactive game in the frontend (no backend persistence required). The game must: (1) render a grid/board of flower tiles, (2) allow the user to create a chain by dragging or clicking adjacent matching flowers, (3) award points based on chain length, (4) provide clear start/restart controls, and (5) show an end condition (e.g., moves or timer) with a results screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create flowers chain game for site and add content relevant and intresting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new route exists for the game and is reachable in-app without requiring staff role.",
+        "The game board renders consistently on mobile and desktop.",
+        "Users can create a chain only by selecting adjacent tiles of the same flower type.",
+        "A score is visible during play and updates immediately when a valid chain is completed.",
+        "A restart/new game action resets the board and score.",
+        "The game includes a clear end condition and shows a results state with final score and a play-again option."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update the Home page “Flowers Chain” promo card to navigate into the new Flowers Chain game route (instead of the current `/details/game` content-only screen), while keeping the other promo cards unchanged.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create flowers chain game for site and add content relevant and intresting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking/tapping the Flowers Chain promo card on Home opens the game route.",
+        "BetterHelp and Specialist promo cards still navigate to their existing details pages.",
+        "Navigation works on both desktop and mobile, including back navigation."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add relevant, interesting, English-language content to complement the Flowers Chain experience. This must include: (1) a short “How to Play” section on the game screen, and (2) a small rotating set of calming, wellness-oriented micro-content related to flowers/relaxation (e.g., short facts or grounding prompts) displayed near the game (client-side rotation; no backend required).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create flowers chain game for site and add content relevant and intresting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Flowers Chain game page includes a readable “How to Play” section with clear instructions.",
+        "The page displays a set of short, relevant wellness/relaxation snippets that can change/rotate during play or between games.",
+        "All new user-facing text is in English and reads naturally."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Integrate optional calming audio controls on the Flowers Chain game page using a locally bundled audio file (play/pause and volume or mute). The game must remain fully usable if audio cannot autoplay or is unavailable.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create flowers chain game for site and add content relevant and intresting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The game page includes play/pause control and a mute/volume control.",
+        "If the browser blocks autoplay, the UI still works and the user can start audio manually.",
+        "Audio is loaded from a static asset in the frontend (not from the backend)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Ensure all new game visuals (flower tiles and an optional soft background/banner for the game page) are added as static assets and used by the UI from `frontend/public/assets/generated` (do not proxy images through the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Create flowers chain game for site and add content relevant and intresting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New required images exist under `frontend/public/assets/generated` and are referenced by the game UI.",
+        "The game UI does not require network calls to load its core visual assets."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (`backend/main.mo`); do not introduce additional backend services.",
+    "Do not edit files under `frontend/src/components/ui` or the immutable hook paths listed in SYSTEM_CONTEXT.",
+    "Do not require third-party APIs, external databases, WebSockets, or external auth providers (Internet Identity only)."
+  ],
+  "nonGoals": [
+    "No multiplayer, leaderboards, or real-time shared play.",
+    "No backend storage of scores or game sessions (client-only is sufficient).",
+    "No external music streaming integrations."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Set of 6 distinct flat flower tile icons on transparent background (flowers-tile-set.dim_512x512.png)",
+      "Soft pastel floral game background/banner (flowers-chain-bg.dim_1600x900.png)"
+    ],
+    "edits": []
+  }
+}

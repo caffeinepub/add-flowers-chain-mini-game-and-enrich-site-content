@@ -1,0 +1,118 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T17:10:46.734Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a new dedicated Flowers Chain game experience as a patient-accessible route (e.g., `/game/flowers-chain`) and implement the interactive game in the frontend (no backend persistence required). The game must: (1) render a grid/board of flower tiles, (2) allow the user to create a chain by dragging or clicking adjacent matching flowers, (3) award points based on chain length, (4) provide clear start/restart controls, and (5) show an end condition (e.g., moves or timer) with a results screen.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+          "frontend/src/components/game/flowers-chain/flowersChainLogic.ts",
+          "frontend/src/components/game/flowers-chain/useFlowersChainGame.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/components/nav/MobileAppBar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+          "frontend/src/components/game/flowers-chain/flowersChainLogic.ts",
+          "frontend/src/components/game/flowers-chain/useFlowersChainGame.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/components/nav/MobileAppBar.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Update the Home page “Flowers Chain” promo card to navigate into the new Flowers Chain game route (instead of the current `/details/game` content-only screen), while keeping the other promo cards unchanged.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/patient/HomePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/patient/HomePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add relevant, interesting, English-language content to complement the Flowers Chain experience. This must include: (1) a short “How to Play” section on the game screen, and (2) a small rotating set of calming, wellness-oriented micro-content related to flowers/relaxation (e.g., short facts or grounding prompts) displayed near the game (client-side rotation; no backend required).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/wellnessSnippets.ts",
+          "frontend/src/components/game/flowers-chain/useRotatingSnippet.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/wellnessSnippets.ts",
+          "frontend/src/components/game/flowers-chain/useRotatingSnippet.ts"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Integrate optional calming audio controls on the Flowers Chain game page using a locally bundled audio file (play/pause and volume or mute). The game must remain fully usable if audio cannot autoplay or is unavailable.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/audio/flowers-chain-calm.dim_60s.mp3",
+          "frontend/src/components/game/flowers-chain/CalmingAudioControls.tsx",
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/game/flowers-chain/CalmingAudioControls.tsx",
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Ensure all new game visuals (flower tiles and an optional soft background/banner for the game page) are added as static assets and used by the UI from `frontend/public/assets/generated` (do not proxy images through the backend).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/flowers-tile-set.dim_512x512.png",
+          "frontend/public/assets/generated/flowers-chain-bg.dim_1600x900.png",
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainTile.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/flowers-tile-set.dim_512x512.png",
+          "frontend/public/assets/generated/flowers-chain-bg.dim_1600x900.png",
+          "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainTile.tsx",
+          "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/flowers-chain-bg.dim_1600x900.png",
+    "frontend/public/assets/generated/flowers-tile-set.dim_512x512.png",
+    "frontend/src/App.tsx",
+    "frontend/src/components/game/flowers-chain/CalmingAudioControls.tsx",
+    "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+    "frontend/src/components/game/flowers-chain/FlowersChainTile.tsx",
+    "frontend/src/components/game/flowers-chain/flowersChainLogic.ts",
+    "frontend/src/components/game/flowers-chain/useFlowersChainGame.ts",
+    "frontend/src/components/game/flowers-chain/useRotatingSnippet.ts",
+    "frontend/src/components/game/flowers-chain/wellnessSnippets.ts",
+    "frontend/src/components/nav/MobileAppBar.tsx",
+    "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+    "frontend/src/pages/patient/HomePage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

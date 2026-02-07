@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website project to build and deploy an interactive \"flowers chain\" game and add relevant, interesting site content.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Set of 6 distinct flat flower tile icons on transparent background (flowers-tile-set.dim_512x512.png)\n- Soft pastel floral game background/banner (flowers-chain-bg.dim_1600x900.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-new-dedicated-flowers-chain-game-experience-as-a-patient-accessible-route-e-g-game-flowers-chain-and-implement-the-interactive-game-in-the-frontend-no-backend-persistence-required-the-game-must-1-render-a-grid-board-of-flower-tiles-2-allow-the-user-to-create-a-chain-by-dragging-or-clicking-adjacent-matching-flowers-3-award-points-based-on-chain-length-4-provide-clear-start-restart-controls-and-5-show-an-end-condition-e-g-moves-or-timer-with-a-results-screen",
+      "title": "Create a new dedicated Flowers Chain game experience as a patient-accessible route (e.g., `/game/flowers-chain`) and implement the interactive game in the frontend (no backend persistence required). The game must: (1) render a grid/board of flower tiles, (2) allow the user to create a chain by dragging or clicking adjacent matching flowers, (3) award points based on chain length, (4) provide clear start/restart controls, and (5) show an end condition (e.g., moves or timer) with a results screen.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-home-page-flowers-chain-promo-card-to-navigate-into-the-new-flowers-chain-game-route-instead-of-the-current-details-game-content-only-screen-while-keeping-the-other-promo-cards-unchanged",
+      "title": "Update the Home page “Flowers Chain” promo card to navigate into the new Flowers Chain game route (instead of the current `/details/game` content-only screen), while keeping the other promo cards unchanged.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-relevant-interesting-english-language-content-to-complement-the-flowers-chain-experience-this-must-include-1-a-short-how-to-play-section-on-the-game-screen-and-2-a-small-rotating-set-of-calming-wellness-oriented-micro-content-related-to-flowers-relaxation-e-g-short-facts-or-grounding-prompts-displayed-near-the-game-client-side-rotation-no-backend-required",
+      "title": "Add relevant, interesting, English-language content to complement the Flowers Chain experience. This must include: (1) a short “How to Play” section on the game screen, and (2) a small rotating set of calming, wellness-oriented micro-content related to flowers/relaxation (e.g., short facts or grounding prompts) displayed near the game (client-side rotation; no backend required).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-optional-calming-audio-controls-on-the-flowers-chain-game-page-using-a-locally-bundled-audio-file-play-pause-and-volume-or-mute-the-game-must-remain-fully-usable-if-audio-cannot-autoplay-or-is-unavailable",
+      "title": "Integrate optional calming audio controls on the Flowers Chain game page using a locally bundled audio file (play/pause and volume or mute). The game must remain fully usable if audio cannot autoplay or is unavailable.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-new-game-visuals-flower-tiles-and-an-optional-soft-background-banner-for-the-game-page-are-added-as-static-assets-and-used-by-the-ui-from-frontend-public-assets-generated-do-not-proxy-images-through-the-backend",
+      "title": "Ensure all new game visuals (flower tiles and an optional soft background/banner for the game page) are added as static assets and used by the UI from `frontend/public/assets/generated` (do not proxy images through the backend).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a \"flowers chain\" game for the site (playful interactive element).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add relevant and interesting content to the site to complement the game/experience.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Add Flowers Chain mini-game and enrich site content",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

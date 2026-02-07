@@ -1,0 +1,154 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Flowers Chain mini-game route, content, and calming media",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a patient-accessible Flowers Chain game route and implement the interactive client-only game (grid, chaining, scoring, restart, end + results).",
+      "acceptanceCriteria": [
+        "A new route exists for the game and is reachable in-app without requiring staff role.",
+        "The game board renders consistently on mobile and desktop.",
+        "Users can create a chain only by selecting adjacent tiles of the same flower type.",
+        "A score is visible during play and updates immediately when a valid chain is completed.",
+        "A restart/new game action resets the board and score.",
+        "The game includes a clear end condition and shows a results state with final score and a play-again option."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "operation": "create",
+          "description": "Create the Flowers Chain game page UI and state orchestration: board rendering, pointer/mouse/touch chain selection, scoring, moves/timer end condition, and results screen with play-again. Use existing pattern components (e.g., BreezeCard, SectionHeader, BreezePrimaryButton) for consistent layout; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+          "operation": "create",
+          "description": "Implement the reusable board component responsible for grid rendering and interaction (start chain, extend chain only to adjacent matching tiles, and commit/cancel chain). Keep it responsive (mobile-first) and accessible (clear focus/aria for controls)."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/flowersChainLogic.ts",
+          "operation": "create",
+          "description": "Add pure client-side game logic helpers (board generation, adjacency checks, chain validation, scoring rules, tile removal/refill). Keep deterministic and unit-test-friendly (no DOM access)."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/useFlowersChainGame.ts",
+          "operation": "create",
+          "description": "Create a React hook to manage game session state (board, score, moves/timer, current chain, game over state) and expose actions (start/restart, begin/extend/end chain)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the new route '/game/flowers-chain' in the TanStack Router route tree and wire it to FlowersChainGamePage (no staff-only guard)."
+        },
+        {
+          "path": "frontend/src/components/nav/MobileAppBar.tsx",
+          "operation": "modify",
+          "description": "Add a route title mapping for '/game/flowers-chain' so the mobile app bar displays a clear title while playing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update the Home Flowers Chain promo card to navigate to the new game route, leaving other promo cards unchanged.",
+      "acceptanceCriteria": [
+        "Clicking/tapping the Flowers Chain promo card on Home opens the game route.",
+        "BetterHelp and Specialist promo cards still navigate to their existing details pages.",
+        "Navigation works on both desktop and mobile, including back navigation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/patient/HomePage.tsx",
+          "operation": "modify",
+          "description": "Change the Flowers Chain promo card click handler to navigate to '/game/flowers-chain' while preserving existing navigation for BetterHelp and Specialist cards."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add English “How to Play” instructions and rotating calming flower/wellness micro-content on the game page (client-side only).",
+      "acceptanceCriteria": [
+        "The Flowers Chain game page includes a readable “How to Play” section with clear instructions.",
+        "The page displays a set of short, relevant wellness/relaxation snippets that can change/rotate during play or between games.",
+        "All new user-facing text is in English and reads naturally."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "operation": "modify",
+          "description": "Add an on-page 'How to Play' section and a calming micro-content panel placed near the board (desktop side panel / mobile stacked). Use existing pattern components for readability; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/wellnessSnippets.ts",
+          "operation": "create",
+          "description": "Define a small curated list of English flower/relaxation micro-content snippets (facts, grounding prompts) and export helpers to select/rotate snippets client-side."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/useRotatingSnippet.ts",
+          "operation": "create",
+          "description": "Implement a lightweight hook to rotate wellness snippets on an interval and/or on game events (e.g., new game / chain completed), without backend calls."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add optional calming audio controls (play/pause + volume/mute) using a locally bundled audio file; gameplay must not depend on autoplay.",
+      "acceptanceCriteria": [
+        "The game page includes play/pause control and a mute/volume control.",
+        "If the browser blocks autoplay, the UI still works and the user can start audio manually.",
+        "Audio is loaded from a static asset in the frontend (not from the backend)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/audio/flowers-chain-calm.dim_60s.mp3",
+          "operation": "create",
+          "description": "Add a locally bundled calming audio file to be used by the Flowers Chain game page controls (static frontend asset; no backend involvement)."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/CalmingAudioControls.tsx",
+          "operation": "create",
+          "description": "Create an audio control component (play/pause and volume/mute) that loads audio from the local static asset, handles autoplay failures gracefully, and never blocks game interaction."
+        },
+        {
+          "path": "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "operation": "modify",
+          "description": "Wire CalmingAudioControls into the Flowers Chain page near the game header/controls, ensuring the game remains fully usable even if audio fails to load or autoplay is blocked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add required Flowers Chain visuals as static generated assets and reference them from the UI (no backend proxying).",
+      "acceptanceCriteria": [
+        "New required images exist under `frontend/public/assets/generated` and are referenced by the game UI.",
+        "The game UI does not require network calls to load its core visual assets."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/flowers-tile-set.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the required set of 6 distinct flat flower tile icons as a static generated image asset."
+        },
+        {
+          "path": "frontend/public/assets/generated/flowers-chain-bg.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the required soft pastel floral background/banner image as a static generated image asset."
+        },
+        {
+          "path": "frontend/src/pages/patient/FlowersChainGamePage.tsx",
+          "operation": "modify",
+          "description": "Reference the static background/banner image from frontend/public/assets/generated/flowers-chain-bg.dim_1600x900.png in the page layout and ensure it degrades gracefully (still readable if image fails)."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/FlowersChainTile.tsx",
+          "operation": "create",
+          "description": "Implement a tile visual component that renders each flower type using the local sprite asset frontend/public/assets/generated/flowers-tile-set.dim_512x512.png (e.g., background positioning per type) and supports selected/active states."
+        },
+        {
+          "path": "frontend/src/components/game/flowers-chain/FlowersChainBoard.tsx",
+          "operation": "modify",
+          "description": "Use FlowersChainTile for all tile visuals so the board consistently pulls from the generated static tile set and does not rely on remote image loading."
+        }
+      ]
+    }
+  ]
+}
